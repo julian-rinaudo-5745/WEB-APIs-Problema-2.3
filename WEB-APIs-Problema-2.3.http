@@ -1,0 +1,6 @@
+@WEB_APIs_Problema_2._3_HostAddress = http://localhost:5093
+
+GET {{WEB_APIs_Problema_2._3_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
