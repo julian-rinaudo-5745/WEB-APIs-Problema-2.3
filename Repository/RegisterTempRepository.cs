@@ -10,12 +10,9 @@ namespace WEB_APIs_Problema_2._3.Repository
     public class RegisterTempRepository : IRegisterTempRepository
     {
         private static RegisterTempRepository instance;
-        private List<RegisterTemp> temps;
+        private static readonly List<RegisterTemp> temps = new List<RegisterTemp>();
 
-        private RegisterTempRepository()
-        {
-            temps = new List<RegisterTemp>();
-        }
+        private RegisterTempRepository() { }
 
         public static RegisterTempRepository GetInstance()
         {

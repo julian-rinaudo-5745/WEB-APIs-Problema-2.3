@@ -19,13 +19,13 @@ namespace WEB_APIs_Problema_2._3
             registerTempRepository = RegisterTempRepository.GetInstance();
         }
         [HttpGet]
-        public ActionResult<List<RegisterTemp>> GetAll()
+        public IActionResult GetAll()
         {
             return Ok(registerTempRepository.GetAll());
         }
 
         [HttpGet("{IOT}")]
-        public ActionResult<List<RegisterTemp>> GetById(int IOT)
+        public ActionResult<List<RegisterTemp>> GetByIOT(int IOT)
         {
             return registerTempRepository.GetByIOT(IOT);
         }
@@ -33,7 +33,10 @@ namespace WEB_APIs_Problema_2._3
         [HttpPost]
         public IActionResult CreateTemp([FromBody] RegisterTemp temp)
         {
-            // Console.WriteLine($"debug => {temp}");
+            if (temp == null)
+            {
+                return BadRequest("temp is a required field");
+            }
             bool wasCreated = registerTempRepository.CreateTemp(temp);
 
             if (wasCreated)
